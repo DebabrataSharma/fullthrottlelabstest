@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'user:create_dummy_data' %}" method="post" novalidate>
+        <input type="text" id="name" name="name" placeholder="Enter name"><br><br>
+        <button type="submit">Create data</button>
+      </form>  
+    {% if user %}
+    {% for each_user in user %}
+    <p>{{each_user.real_name}}
+    <t>{{each_user.tz}}</t></p>
+    {% for each_activity in each_user.activity_period.all %}
+    {{each_activity.start_time}}
+    {{each_activity.end_time}}<br>
+    {% endfor %}
+    {% endfor %}
+
+    {% else %}
+    No data
+    {% endif %}
+
+</body>
+</html>
