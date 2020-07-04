@@ -1,1 +1,1 @@
-web: gunicorn dummyproject.wsgi --log-file -
+web: gunicorn dummyproject.wsgi --timeout 15 --keep-alive 5 --log-level debug
