@@ -23,18 +23,15 @@ def home(request):
     :http-method :GET
     """
     if request.method == 'GET':
-        url = 'http://'+request.get_host()+'/api/'
+        url = 'http://'+request.get_host()+'/api/data'
         headers = {
             'Content-Type': 'application/json',
         }
-        try:
-            response = requests.get(url=url, headers=headers)
+        response = requests.get(url=url, headers=headers)
+        if response.json()['members']:
             context = {'user': response.json()}
-        except Exception as e:
-            print(e,"************")
+        else:
             context = {'user': None}
-        
-        
         return render(request, 'home.html', context)
 
 @csrf_exempt 

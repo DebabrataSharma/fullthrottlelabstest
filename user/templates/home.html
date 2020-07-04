@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% block body %}
-
-    <form class="" action="{% url 'user:create_dummy_data' %}" method="post">
+<style>
+  
+  .create {
+    margin-left: 10rem;
+    padding-top: 3rem;
+}
+  
+</style>
+    <form class="create" action="{% url 'user:create_dummy_data' %}" method="post">
         Username: <input type="text" name="name" required>
         <button type="submit">Create data</button>
       </form>  
@@ -28,6 +35,7 @@
     {% endif %}
     
     <script>
+
         function show_json() {      
           document.getElementById("demo").innerHTML = '{{user}}';
 

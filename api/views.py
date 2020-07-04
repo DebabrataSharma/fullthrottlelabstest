@@ -37,5 +37,5 @@ class GenericDataList(APIView):
                         each['activity_period'][i] = eval(each['activity_period'][i])
             data = {"ok":"true", "members":serializer.data}
         else:
-            data = {"ok":"false", "members": "No members"}
+            data = {"ok":"false", "members": None}
         return Response(data)
