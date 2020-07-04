@@ -1,27 +1,37 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="{% url 'user:create_dummy_data' %}" method="post" novalidate>
-        <input type="text" id="name" name="name" placeholder="Enter name"><br><br>
+{% extends 'base.html' %}
+{% block body %}
+
+    <form class="" action="{% url 'user:create_dummy_data' %}" method="post">
+        Username: <input type="text" name="name" required>
         <button type="submit">Create data</button>
       </form>  
     {% if user %}
-    {% for each_user in user %}
-    <p>{{each_user.real_name}}
-    <t>{{each_user.tz}}</t></p>
-    {% for each_activity in each_user.activity_period.all %}
-    {{each_activity.start_time}}
-    {{each_activity.end_time}}<br>
-    {% endfor %}
-    {% endfor %}
-
+    <p id="demo"></p>
+    <button type="submit" onclick="show_json()">Json View</button><br>
+        {% for key,value in user.items %}
+            {% ifequal key 'members' %}
+            {% for each in value %}
+            <div class="card" style="width: 100rem; margin-left: 7rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Member</h5>
+                  <p class="card-text">{% for val_key,val_value in each.items %}
+                  {{val_key}}:{{val_value}}<br>
+                  {% endfor %}
+                  </p>
+                </div>
+              </div>                    
+            {% endfor %}
+            {% endifequal %}
+        {% endfor %}
     {% else %}
-    No data
+    <h4>No data<h4>
     {% endif %}
+    
+    <script>
+        function show_json() {      
+          document.getElementById("demo").innerHTML = '{{user}}';
 
-</body>
-</html>
+        }
+        </script>
+        
+{% endblock %}
