@@ -54,7 +54,6 @@ This project aims to implement a sequence of tasks
         ├── __init__.py
         ├── models.py
         ├── templates
-        │   ├── create_dummy.html
         │   └── home.html
         ├── tests.py
         ├── urls.py
