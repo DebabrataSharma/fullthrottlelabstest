@@ -47,8 +47,8 @@ def create_dummy_data(request):
     letters = string.ascii_lowercase+'0123456789'
     id =  ''.join(random.choice(letters) for i in range(0,9))
     user = Users.objects.create(id=id,real_name=real_name, tz=tz)
-    num_activity_periods = random.randint(0,4)
-    for each_activity_period in range(0, num_activity_periods):
+    num_activity_periods = random.randint(1,5)
+    for i in range(0, num_activity_periods):
         start_time = datetime.datetime.today() - datetime.timedelta(days=random.randrange(8))
         end_time = start_time + datetime.timedelta(days=random.randrange(10))
         ActivityPeriod.objects.create(start_time=start_time,end_time=end_time, user=user)
