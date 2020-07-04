@@ -30,7 +30,8 @@ def home(request):
         try:
             response = requests.get(url=url, headers=headers)
             context = {'user': response.json()}
-        except:
+        except Exception as e:
+            print(e,"************")
             context = {'user': None}
         
         
