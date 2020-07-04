@@ -15,12 +15,13 @@ This project aims to implement a sequence of tasks
 ## Run the program:
     Install python 3.x, pip
     Run in terminal:
-      pip install -r requirements.txt(It contains all the packages and dependencies for the project)
+      pip install -r requirements.txt(It contains all the dependencies for the project)
     Read documentation for API.
     Run in terminal:
       python3 manage.py makemigrations
       python3 manage.py migrate
       python3 manage.py runserver
+    To populate the database, provide a username in the text field in the home page 
     Do API hits using Postman.
 
 
