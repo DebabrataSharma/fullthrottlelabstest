@@ -27,8 +27,14 @@ def home(request):
         headers = {
             'Content-Type': 'application/json',
         }
-        response = requests.get(url=url, headers=headers)
-        context = {'user': response.json()}
+        try:
+            response = requests.get(url=url, headers=headers)
+            context = {'user': response.json()}
+        except as e:
+            print(e,"**************")
+            context = {'user': None}
+        
+        
         return render(request, 'home.html', context)
 
 @csrf_exempt 
